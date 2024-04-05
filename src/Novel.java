@@ -62,7 +62,7 @@ public class Novel {
         }
     }
 
-    public static ArrayList<Novel> buildNovel() {
+    public static ArrayList<Novel> getRecommendation() {
         ArrayList<Novel> novels = new ArrayList<Novel>();
         String[] genre = {"xianxia", "mystery", "romance", "vr"};
         String[] order = {"01", "02", "03", "04", "05"};

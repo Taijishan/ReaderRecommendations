@@ -15,25 +15,21 @@ class DrawPanel extends JPanel implements MouseListener {
     public DrawPanel() {
         button = new Rectangle(147, 100, 160, 26);
         this.addMouseListener(this);
-        novels = Novel.buildNovel();
+        novels = Novel.getRecommendation();
     }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int x = 50;
-        int y = 10;
+        int x = 0;
+        int y = 0;
         for (int i = 0; i < novels.size(); i++) {
-            if(i%3==0 && i!=0){
-                y+=96;
-                x=50;
-            }
             Novel n = novels.get(i);
             n.setRectangleLocation(x, y);
             g.drawImage(n.getImage(), x, y, null);
-            x = x + n.getImage().getWidth() + 10;
+            x = x + n.getImage().getWidth()+1;
         }
-        g.setFont(new Font("Courier New", Font.BOLD, 20));
-        g.drawString("GET NEW RECOMMENDATIONS", 150, 120);
+        g.setFont(new Font("Courier New", Font.BOLD, 30));
+        g.drawString("GET NEW RECOMMENDATIONS", 150, 240);
         g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
     }
 
@@ -43,13 +39,20 @@ class DrawPanel extends JPanel implements MouseListener {
 
         if (e.getButton() == 1) {
             if (button.contains(clicked)) {
-                novels = Novel.buildNovel();
+                novels = Novel.getRecommendation();
             }
 
             for (int i = 0; i < novels.size(); i++) {
                 Rectangle box = novels.get(i).getCardBox();
                 if (box.contains(clicked)) {
-                    System.out.println("to be done later");
+                    Novel novel = Novel.getRecommendation().get(0);
+                    System.out.println(novel.getImageFileName());
+                    int index = 0;
+                    while (index < 19){
+                        novel = Novel.getRecommendation().get(index+1);
+                        System.out.println(novel.getImageFileName());
+                        index++;
+                    }
                 }
             }
         }
@@ -58,7 +61,7 @@ class DrawPanel extends JPanel implements MouseListener {
             for (int i = 0; i < novels.size(); i++) {
                 Rectangle box = novels.get(i).getCardBox();
                 if (box.contains(clicked)) {
-                    System.out.println("to be done later");
+                    System.out.println("You can't do that");
                 }
             }
         }
