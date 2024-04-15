@@ -33,6 +33,14 @@ public class Novel {
         return value;
     }
 
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     public void setRectangleLocation(int x, int y) {
         cardBox.setLocation(x, y);
     }
@@ -62,9 +70,9 @@ public class Novel {
         }
     }
 
-    public static ArrayList<Novel> getRecommendation() {
+    public static ArrayList<Novel> buildRecommendation() {
         ArrayList<Novel> novels = new ArrayList<Novel>();
-        String[] genre = {"xianxia", "mystery", "romance", "vr"};
+        String[] genre = {"mystery", "romance", "vr", "xianxia"};
         String[] order = {"01", "02", "03", "04", "05"};
         for (String g : genre) {
             for (String o : order) {
@@ -73,6 +81,17 @@ public class Novel {
             }
         }
         return novels;
+    }
+
+    public static ArrayList<Novel> getRecommendation(){
+        ArrayList<Novel> genre = Novel.buildRecommendation();
+        ArrayList<Novel> order = new ArrayList<Novel>();
+        for (int i = 0; i < 5; i++) {
+            int r = (int)(Math.random()*genre.size());
+            Novel c = genre.remove(r);
+            order.add(c);
+        }
+        return order;
     }
 
 }

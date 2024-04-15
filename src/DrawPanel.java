@@ -15,18 +15,22 @@ class DrawPanel extends JPanel implements MouseListener {
     public DrawPanel() {
         button = new Rectangle(147, 100, 160, 26);
         this.addMouseListener(this);
-        novels = Novel.getRecommendation();
+        novels = Novel.buildRecommendation();
     }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int x = 0;
-        int y = 0;
+        int x = 50;
+        int y = 10;
         for (int i = 0; i < novels.size(); i++) {
+            if (i == 3){
+                x-=800;
+                y+=600;
+            }
             Novel n = novels.get(i);
             n.setRectangleLocation(x, y);
             g.drawImage(n.getImage(), x, y, null);
-            x = x + n.getImage().getWidth()+1;
+            x = x + n.getImage().getWidth()+10;
         }
         g.setFont(new Font("Courier New", Font.BOLD, 30));
         g.drawString("GET NEW RECOMMENDATIONS", 150, 240);
@@ -42,19 +46,7 @@ class DrawPanel extends JPanel implements MouseListener {
                 novels = Novel.getRecommendation();
             }
 
-            for (int i = 0; i < novels.size(); i++) {
-                Rectangle box = novels.get(i).getCardBox();
-                if (box.contains(clicked)) {
-                    Novel novel = Novel.getRecommendation().get(0);
-                    System.out.println(novel.getImageFileName());
-                    int index = 0;
-                    while (index < 19){
-                        novel = Novel.getRecommendation().get(index+1);
-                        System.out.println(novel.getImageFileName());
-                        index++;
-                    }
-                }
-            }
+
         }
 
         if (e.getButton() == 3) {
@@ -74,3 +66,17 @@ class DrawPanel extends JPanel implements MouseListener {
     public void mouseExited(MouseEvent e) { }
     public void mouseClicked(MouseEvent e) { }
 }
+
+//for (int i = 0; i < novels.size(); i++) {
+//                Rectangle box = novels.get(i).getCardBox();
+//                if (box.contains(clicked)) {
+//                    Novel novel = Novel.getRecommendation().get(0);
+//                    System.out.println(novel.getImageFileName());
+//                    int index = 0;
+//                    while (index < 19){
+//                        novel = Novel.getRecommendation().get(index+1);
+//                        System.out.println(novel.getImageFileName());
+//                        index++;
+//                    }
+//                }
+//            }
