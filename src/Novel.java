@@ -10,6 +10,8 @@ public class Novel {
     private String genre;
     private String value;
     private String imageFileName;
+    private String imageFileSynopsis;
+    private boolean show;
     private BufferedImage image;
     private Rectangle cardBox;
 
@@ -17,6 +19,8 @@ public class Novel {
         this.genre = genre;
         this.value = value;
         this.imageFileName = "images/novel_"+genre+"_"+value+".png";
+        this.show = true;
+        this.imageFileSynopsis = "descriptions/novel_"+genre+"_"+value+".png";
         this.image = readImage();
         this.cardBox = new Rectangle(-100, -100, image.getWidth(), image.getHeight());
     }
@@ -53,6 +57,10 @@ public class Novel {
     public String toString() {
         return genre + " " + value;
     }
+    public void flipImage(){
+        show = !show;
+        this.image = readImage();
+    }
 
     public BufferedImage getImage() {
         return image;
@@ -61,7 +69,12 @@ public class Novel {
     public BufferedImage readImage() {
         try {
             BufferedImage image;
-            image = ImageIO.read(new File(imageFileName));
+            if (show) {
+                image = ImageIO.read(new File(imageFileName));
+            }
+            else {
+                image = ImageIO.read(new File(imageFileSynopsis));
+            }
             return image;
         }
         catch (IOException e) {

@@ -13,7 +13,7 @@ class DrawPanel extends JPanel implements MouseListener {
     private Rectangle button;
 
     public DrawPanel() {
-        button = new Rectangle(147, 100, 160, 26);
+        button = new Rectangle(666, 333, 300, 40);
         this.addMouseListener(this);
         novels = Novel.buildRecommendation();
     }
@@ -24,7 +24,7 @@ class DrawPanel extends JPanel implements MouseListener {
         int y = 10;
         for (int i = 0; i < novels.size(); i++) {
             if (i == 3){
-                x-=800;
+                x-=500;
                 y+=600;
             }
             Novel n = novels.get(i);
@@ -32,8 +32,8 @@ class DrawPanel extends JPanel implements MouseListener {
             g.drawImage(n.getImage(), x, y, null);
             x = x + n.getImage().getWidth()+10;
         }
-        g.setFont(new Font("Courier New", Font.BOLD, 30));
-        g.drawString("GET NEW RECOMMENDATIONS", 150, 240);
+        g.setFont(new Font("Courier New", Font.BOLD, 20));
+        g.drawString("GET NEW RECOMMENDATIONS", 670, 353);
         g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
     }
 
@@ -45,20 +45,27 @@ class DrawPanel extends JPanel implements MouseListener {
             if (button.contains(clicked)) {
                 novels = Novel.getRecommendation();
             }
-
-
-        }
-
-        if (e.getButton() == 3) {
             for (int i = 0; i < novels.size(); i++) {
                 Rectangle box = novels.get(i).getCardBox();
                 if (box.contains(clicked)) {
-                    System.out.println("You can't do that");
+                    novels.get(i).flipImage();
+                    System.out.println("Does this spark interest?");
+                }
+
+
+            }
+
+            if (e.getButton() == 3) {
+                for (int i = 0; i < novels.size(); i++) {
+                    Rectangle box = novels.get(i).getCardBox();
+                    if (box.contains(clicked)) {
+                        System.out.println("You can't do that");
+                    }
                 }
             }
+
+
         }
-
-
     }
 
     public void mouseReleased(MouseEvent e) { }
