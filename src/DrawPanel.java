@@ -13,7 +13,7 @@ class DrawPanel extends JPanel implements MouseListener {
     private Rectangle button;
 
     public DrawPanel() {
-        button = new Rectangle(666, 333, 300, 40);
+        button = new Rectangle(666, 413, 300, 40);
         this.addMouseListener(this);
         novels = Novel.buildRecommendation();
     }
@@ -24,7 +24,7 @@ class DrawPanel extends JPanel implements MouseListener {
         int y = 10;
         for (int i = 0; i < novels.size(); i++) {
             if (i == 3){
-                x-=500;
+                x-=650;
                 y+=600;
             }
             Novel n = novels.get(i);
@@ -33,7 +33,7 @@ class DrawPanel extends JPanel implements MouseListener {
             x = x + n.getImage().getWidth()+10;
         }
         g.setFont(new Font("Courier New", Font.BOLD, 20));
-        g.drawString("GET NEW RECOMMENDATIONS", 670, 353);
+        g.drawString("GET NEW RECOMMENDATIONS", 670, 433);
         g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
     }
 
@@ -49,7 +49,7 @@ class DrawPanel extends JPanel implements MouseListener {
                 Rectangle box = novels.get(i).getCardBox();
                 if (box.contains(clicked)) {
                     novels.get(i).flipImage();
-                    System.out.println("Does this spark interest?");
+                    System.out.println("Does this spark interest?"); //turn this into button rather than in scanner
                 }
 
 
@@ -74,16 +74,3 @@ class DrawPanel extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) { }
 }
 
-//for (int i = 0; i < novels.size(); i++) {
-//                Rectangle box = novels.get(i).getCardBox();
-//                if (box.contains(clicked)) {
-//                    Novel novel = Novel.getRecommendation().get(0);
-//                    System.out.println(novel.getImageFileName());
-//                    int index = 0;
-//                    while (index < 19){
-//                        novel = Novel.getRecommendation().get(index+1);
-//                        System.out.println(novel.getImageFileName());
-//                        index++;
-//                    }
-//                }
-//            }
