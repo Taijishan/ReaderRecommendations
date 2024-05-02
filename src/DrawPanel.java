@@ -23,8 +23,8 @@ class DrawPanel extends JPanel implements MouseListener {
         int x = 50;
         int y = 10;
         for (int i = 0; i < novels.size(); i++) {
-            if (i == 3){
-                x-=650;
+            if (i == 9){
+                x-=1900;
                 y+=600;
             }
             Novel n = novels.get(i);
@@ -49,7 +49,7 @@ class DrawPanel extends JPanel implements MouseListener {
                 Rectangle box = novels.get(i).getCardBox();
                 if (box.contains(clicked)) {
                     novels.get(i).flipImage();
-                    System.out.println("Does this spark interest?"); //turn this into button rather than in scanner
+                    System.out.println("Does this spark interest?"); //make this a radio button instead
                 }
 
 
