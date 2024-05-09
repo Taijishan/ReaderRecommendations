@@ -60,6 +60,7 @@ public class Novel {
     public void flipImage(){
         show = !show;
         this.image = readImage();
+
     }
 
     public BufferedImage getImage() {
@@ -107,4 +108,7 @@ public class Novel {
         return order;
     }
 
+    public boolean isShown() {
+        return show;
+    }
 }
