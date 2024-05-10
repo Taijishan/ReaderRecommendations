@@ -17,7 +17,7 @@ class DrawPanel extends JPanel implements MouseListener {
     private String genre;
     public DrawPanel(String genre) {
         this.genre = genre;
-        button = new Rectangle(666, 413, 300, 40);
+        button = new Rectangle(666, 413, 350, 40);
         button2 = new Rectangle(888, 555, 400, 80);
         this.addMouseListener(this);
         novels = Novel.buildRecommendation(genre);
@@ -25,8 +25,8 @@ class DrawPanel extends JPanel implements MouseListener {
 
     public DrawPanel() {
         this.genre = "random";
-        button = new Rectangle(666, 413, 300, 40);
-        button2 = new Rectangle(888, 555, 400, 50);
+        button = new Rectangle(666, 413, 350, 40);
+        button2 = new Rectangle(888, 555, 400, 80);
         this.addMouseListener(this);
         novels = Novel.buildRandomRecommendation();
     }
@@ -53,7 +53,7 @@ class DrawPanel extends JPanel implements MouseListener {
             }
             if (n.isShown()){
                 g.setFont(new Font("Courier New", Font.BOLD, 20));
-                g.drawString("GET NEW RECOMMENDATIONS", 670, 433);
+                g.drawString("GET RANDOM RECOMMENDATIONS", 670, 433);
                 g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
             }
         }
