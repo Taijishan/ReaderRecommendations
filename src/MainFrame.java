@@ -16,7 +16,7 @@ public class MainFrame extends JFrame implements Runnable {
             System.out.println("Displaying mystery novel images.");
             int frameWidth = 1000;
             int frameHeight = 1000;
-            p = new DrawPanel();
+            p = new DrawPanel("mystery");
             this.add(p);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setSize(frameWidth, frameHeight);
@@ -27,7 +27,7 @@ public class MainFrame extends JFrame implements Runnable {
             System.out.println("Displaying romance novel images.");
             int frameWidth = 1000;
             int frameHeight = 1000;
-            p = new DrawPanel();
+            p = new DrawPanel("romance");
             this.add(p);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setSize(frameWidth, frameHeight);
@@ -39,7 +39,7 @@ public class MainFrame extends JFrame implements Runnable {
             System.out.println("Displaying vr novel images.");
             int frameWidth = 1000;
             int frameHeight = 1000;
-            p = new DrawPanel();
+            p = new DrawPanel("vr");
             this.add(p);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setSize(frameWidth, frameHeight);
@@ -51,7 +51,7 @@ public class MainFrame extends JFrame implements Runnable {
             System.out.println("Displaying xianxia novel images.");
             int frameWidth = 1000;
             int frameHeight = 1000;
-            p = new DrawPanel();
+            p = new DrawPanel("xianxia");
             this.add(p);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setSize(frameWidth, frameHeight);

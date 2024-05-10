@@ -14,11 +14,21 @@ class DrawPanel extends JPanel implements MouseListener {
     private ArrayList<Novel> novels;
     private Rectangle button;
     private Rectangle button2;
+    private String genre;
+    public DrawPanel(String genre) {
+        this.genre = genre;
+        button = new Rectangle(666, 413, 300, 40);
+        button2 = new Rectangle(888, 555, 400, 80);
+        this.addMouseListener(this);
+        novels = Novel.buildRecommendation(genre);
+    }
+
     public DrawPanel() {
+        this.genre = "random";
         button = new Rectangle(666, 413, 300, 40);
         button2 = new Rectangle(888, 555, 400, 50);
         this.addMouseListener(this);
-        novels = Novel.buildRecommendation();
+        novels = Novel.buildRandomRecommendation();
     }
 
     protected void paintComponent(Graphics g) {
@@ -37,13 +47,16 @@ class DrawPanel extends JPanel implements MouseListener {
             if (!n.isShown()) {
                 g.setFont(new Font("Times New Roman",Font.BOLD,20));
                 g.drawString("Are you interested?", 890, 570);
+                g.drawString("If yes, click on this box.", 890, 600);
+                g.drawString("If no, click the synopsis to go back.", 890, 630);
                 g.drawRect((int)button2.getX(), (int)button2.getY(), (int)button2.getWidth(), (int)button2.getHeight());
             }
+            if (n.isShown()){
+                g.setFont(new Font("Courier New", Font.BOLD, 20));
+                g.drawString("GET NEW RECOMMENDATIONS", 670, 433);
+                g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
+            }
         }
-        g.setFont(new Font("Courier New", Font.BOLD, 20));
-        g.drawString("GET NEW RECOMMENDATIONS", 670, 433);
-        g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
-
     }
 
 
@@ -53,8 +66,10 @@ class DrawPanel extends JPanel implements MouseListener {
         Point pressed = e.getPoint();
 
         if (e.getButton() == 1) {
-            if (button.contains(pressed)) {
-                novels = Novel.getRecommendation();
+            if (button.contains(pressed) && genre.equals("random")) {
+                novels = Novel.getRandomRecommendation();
+            } else if (button.contains(pressed)) {
+                novels = Novel.getRecommendation(genre);
             }
             for (int i = 0; i < novels.size(); i++) {
                 Rectangle box = novels.get(i).getCardBox();

@@ -50,10 +50,6 @@ public class Novel {
     }
 
 
-    public String getImageFileName() {
-        return imageFileName;
-    }
-
     public String toString() {
         return genre + " " + value;
     }
@@ -84,11 +80,21 @@ public class Novel {
         }
     }
 
-    public static ArrayList<Novel> buildRecommendation() {
+    public static ArrayList<Novel> buildRecommendation(String genre) {
+        ArrayList<Novel> novels = new ArrayList<Novel>();
+        String[] order = {"01", "02", "03", "04", "05"};
+            for (String o : order) {
+                Novel novel = new Novel(genre, o);
+                novels.add(novel);
+        }
+        return novels;
+    }
+
+    public static ArrayList<Novel> buildRandomRecommendation() {
         ArrayList<Novel> novels = new ArrayList<Novel>();
         String[] genre = {"mystery", "romance", "vr", "xianxia"};
         String[] order = {"01", "02", "03", "04", "05"};
-        for (String g : genre) {
+        for (String g : genre){
             for (String o : order) {
                 Novel novel = new Novel(g, o);
                 novels.add(novel);
@@ -97,8 +103,19 @@ public class Novel {
         return novels;
     }
 
-    public static ArrayList<Novel> getRecommendation(){
-        ArrayList<Novel> genre = Novel.buildRecommendation();
+    public static ArrayList<Novel> getRandomRecommendation(){
+        ArrayList<Novel> genre = Novel.buildRandomRecommendation();
+        ArrayList<Novel> order = new ArrayList<Novel>();
+        for (int i = 0; i < 6; i++) {
+            int r = (int)(Math.random()*genre.size());
+            Novel c = genre.remove(r);
+            order.add(c);
+        }
+        return order;
+    }
+
+    public static ArrayList<Novel> getRecommendation(String g){
+        ArrayList<Novel> genre = Novel.buildRecommendation(g);
         ArrayList<Novel> order = new ArrayList<Novel>();
         for (int i = 0; i < 5; i++) {
             int r = (int)(Math.random()*genre.size());
@@ -107,6 +124,7 @@ public class Novel {
         }
         return order;
     }
+
 
     public boolean isShown() {
         return show;
