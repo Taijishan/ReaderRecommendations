@@ -10,7 +10,6 @@ public class MainFrame extends JFrame implements Runnable {
         super(display);
         Scanner s = new Scanner(System.in);
         System.out.println("What genre do you want to read?\n1) mystery\n2) romance\n3) vr\n4) xianxia\n5) let me browse");
-        //fix this so it actually only shows specific novels of said genre chosen + make this jcheckbox rather than scanner
         String response = s.nextLine();
         if (response.equals("1")){
             System.out.println("Displaying mystery novel images.");
@@ -72,7 +71,7 @@ public class MainFrame extends JFrame implements Runnable {
             startThread();
         }
         else {
-            System.out.println("This is not a valid option");
+            System.out.println("This is not a valid option, please rerun the program.");
         }
 
     }

@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.awt.Rectangle;
 import java.util.Vector;
 
-public class Novel {
+public class
+Novel {
     private String genre;
     private String value;
     private String imageFileName;

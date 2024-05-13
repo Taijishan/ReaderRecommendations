@@ -15,10 +15,10 @@ class DrawPanel extends JPanel implements MouseListener {
     private Rectangle button;
     private Rectangle button2;
     private String genre;
+    private boolean button2Shown = false;
     public DrawPanel(String genre) {
         this.genre = genre;
         button = new Rectangle(666, 413, 350, 40);
-        button2 = new Rectangle(888, 555, 400, 80);
         this.addMouseListener(this);
         novels = Novel.buildRecommendation(genre);
     }
@@ -26,7 +26,6 @@ class DrawPanel extends JPanel implements MouseListener {
     public DrawPanel() {
         this.genre = "random";
         button = new Rectangle(666, 413, 350, 40);
-        button2 = new Rectangle(888, 555, 400, 80);
         this.addMouseListener(this);
         novels = Novel.buildRandomRecommendation();
     }
@@ -45,13 +44,17 @@ class DrawPanel extends JPanel implements MouseListener {
             g.drawImage(n.getImage(), x, y, null);
             x = x + n.getImage().getWidth()+10;
             if (!n.isShown()) {
+                button2 = new Rectangle(888, 555, 400, 80);
+                button2Shown = true;
                 g.setFont(new Font("Times New Roman",Font.BOLD,20));
                 g.drawString("Are you interested?", 890, 570);
                 g.drawString("If yes, click on this box.", 890, 600);
                 g.drawString("If no, click the synopsis to go back.", 890, 630);
                 g.drawRect((int)button2.getX(), (int)button2.getY(), (int)button2.getWidth(), (int)button2.getHeight());
+                break;
             }
             if (n.isShown()){
+                button2Shown = false;
                 g.setFont(new Font("Courier New", Font.BOLD, 20));
                 g.drawString("GET RANDOM RECOMMENDATIONS", 670, 433);
                 g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
@@ -75,9 +78,11 @@ class DrawPanel extends JPanel implements MouseListener {
                 Rectangle box = novels.get(i).getCardBox();
                 if (box.contains(pressed)) {
                     novels.get(i).flipImage();
-                    if (button2.contains(pressed)){
-                        System.out.println("You have selected this novel.");//does not work
-                    }
+                }
+            }
+            if (button2Shown) {
+                if (button2.contains(pressed)) {
+                    System.out.println("You have selected this novel.");
                 }
             }
 
