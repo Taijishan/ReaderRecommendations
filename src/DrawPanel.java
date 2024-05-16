@@ -56,7 +56,7 @@ class DrawPanel extends JPanel implements MouseListener {
             if (n.isShown()){
                 button2Shown = false;
                 g.setFont(new Font("Courier New", Font.BOLD, 20));
-                g.drawString("GET RANDOM RECOMMENDATIONS", 670, 433);
+                g.drawString("REFRESH PAGE", 670, 433);
                 g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
             }
         }
@@ -79,10 +79,14 @@ class DrawPanel extends JPanel implements MouseListener {
                 if (box.contains(pressed)) {
                     novels.get(i).flipImage();
                 }
+
             }
             if (button2Shown) {
                 if (button2.contains(pressed)) {
                     System.out.println("You have selected this novel.");
+                    ReadingList userList = new ReadingList();
+                    userList.addToList("null");
+
                 }
             }
 

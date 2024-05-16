@@ -30,21 +30,6 @@ Novel {
         return cardBox;
     }
 
-    public String getGenre() {
-        return genre;
-    }
-
-    public String getValue(){
-        return value;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
 
     public void setRectangleLocation(int x, int y) {
         cardBox.setLocation(x, y);
