@@ -16,6 +16,8 @@ class DrawPanel extends JPanel implements MouseListener {
     private Rectangle button2;
     private String genre;
     private boolean button2Shown = false;
+    private ReadingList userList = new ReadingList();
+
     public DrawPanel(String genre) {
         this.genre = genre;
         button = new Rectangle(666, 413, 350, 40);
@@ -51,7 +53,7 @@ class DrawPanel extends JPanel implements MouseListener {
                 g.drawString("If yes, click on this box.", 890, 600);
                 g.drawString("If no, click the synopsis to go back.", 890, 630);
                 g.drawRect((int)button2.getX(), (int)button2.getY(), (int)button2.getWidth(), (int)button2.getHeight());
-                break;
+
             }
             if (n.isShown()){
                 button2Shown = false;
@@ -79,13 +81,15 @@ class DrawPanel extends JPanel implements MouseListener {
                 if (box.contains(pressed)) {
                     novels.get(i).flipImage();
                 }
-
+                if (!box.contains(pressed) && !novels.get(i).isShown()) {
+                    novels.get(i).flipImage();
+                }
             }
             if (button2Shown) {
                 if (button2.contains(pressed)) {
                     System.out.println("You have selected this novel.");
-                    ReadingList userList = new ReadingList();
-                    userList.addToList("null");
+                    userList.addToList("placeholder");
+                    System.out.println(userList.showReadingList());
 
                 }
             }
