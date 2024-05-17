@@ -81,15 +81,15 @@ class DrawPanel extends JPanel implements MouseListener {
                 if (box.contains(pressed)) {
                     novels.get(i).flipImage();
                 }
-                if (!box.contains(pressed) && !novels.get(i).isShown()) {
-                    novels.get(i).flipImage();
-                }
             }
             if (button2Shown) {
                 if (button2.contains(pressed)) {
-                    System.out.println("You have selected this novel.");
+                    System.out.println("You have selected the novel(s) for your reading list.");
                     userList.addToList("placeholder");
-                    System.out.println(userList.showReadingList());
+                    System.out.println("As of now, your current reading list consists of these novels : " + userList.showReadingList()); //doesnt work
+                    System.out.println("Would you like to start another browsing session? Your reading list will be saved. \ny/n?"); //save+load file implementation after fixing above^
+                    System.exit(0);
+
 
                 }
             }
