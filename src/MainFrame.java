@@ -9,7 +9,7 @@ public class MainFrame extends JFrame implements Runnable {
     public MainFrame(String display) {
         super(display);
         Scanner s = new Scanner(System.in);
-        System.out.println("What genre do you want to read?\n1) mystery\n2) romance\n3) vr\n4) xianxia\n5) let me browse");
+        System.out.println("What genre do you want to read?\n1) mystery\n2) romance\n3) vr(virtual reality)\n4) xianxia\n5) let me browse");
         String response = s.nextLine();
         if (response.equals("1")){
             System.out.println("Displaying mystery novel images.");
@@ -18,6 +18,7 @@ public class MainFrame extends JFrame implements Runnable {
             p = new DrawPanel("mystery");
             this.add(p);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
             this.setSize(frameWidth, frameHeight);
             this.setLocation(10, 10);
             this.setVisible(true);
