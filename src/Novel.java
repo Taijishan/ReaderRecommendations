@@ -96,7 +96,7 @@ Novel {
     public static ArrayList<Novel> getRandomRecommendation(){
         ArrayList<Novel> genre = Novel.buildRandomRecommendation();
         ArrayList<Novel> order = new ArrayList<Novel>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 1; i++) {
             int r = (int)(Math.random()*genre.size());
             Novel c = genre.remove(r);
             order.add(c);
@@ -107,7 +107,7 @@ Novel {
     public static ArrayList<Novel> getRecommendation(String g){
         ArrayList<Novel> genre = Novel.buildRecommendation(g);
         ArrayList<Novel> order = new ArrayList<Novel>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
             int r = (int)(Math.random()*genre.size());
             Novel c = genre.remove(r);
             order.add(c);

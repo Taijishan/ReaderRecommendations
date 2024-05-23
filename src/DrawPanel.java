@@ -13,6 +13,7 @@ import java.util.Scanner;
 class DrawPanel extends JPanel implements MouseListener {
 
     private ArrayList<Novel> novels;
+    private ArrayList<Background> backgrounds;
     private Rectangle button;
     private Rectangle button2;
     private String genre;
@@ -24,6 +25,7 @@ class DrawPanel extends JPanel implements MouseListener {
         button = new Rectangle(666, 413, 350, 40);
         this.addMouseListener(this);
         novels = Novel.buildRecommendation(genre);
+        backgrounds = Background.buildBackground(genre);
     }
 
     public DrawPanel() {
@@ -31,6 +33,7 @@ class DrawPanel extends JPanel implements MouseListener {
         button = new Rectangle(666, 413, 350, 40);
         this.addMouseListener(this);
         novels = Novel.buildRandomRecommendation();
+        backgrounds = Background.buildRandomBackground();
     }
 
     protected void paintComponent(Graphics g) {
@@ -74,8 +77,10 @@ class DrawPanel extends JPanel implements MouseListener {
         if (e.getButton() == 1) {
             if (button.contains(pressed) && genre.equals("random")) {
                 novels = Novel.getRandomRecommendation();
+                backgrounds = Background.getRandomBackground();
             } else if (button.contains(pressed)) {
                 novels = Novel.getRecommendation(genre);
+                backgrounds = Background.getBackground(genre);
             }
             for (int i = 0; i < novels.size(); i++) {
                 Rectangle box = novels.get(i).getCardBox();
