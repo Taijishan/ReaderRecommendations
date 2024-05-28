@@ -18,7 +18,6 @@ public class MainFrame extends JFrame implements Runnable {
             p = new DrawPanel("mystery");
             this.add(p);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
             this.setSize(frameWidth, frameHeight);
             this.setLocation(10, 10);
             this.setVisible(true);
