@@ -14,32 +14,8 @@ public class Background {
     public Background(String genre) {
         this.genre = genre;
         this.backgroundFileName = "backgrounds/" + genre + ".png";
-        this.image = readImage();
-        this.cardBox = new Rectangle(-100, -100, image.getWidth(), image.getHeight());
     }
 
-    public Rectangle getCardBox() {
-        return cardBox;
-    }
-
-
-    public void setRectangleLocation(int x, int y) {
-        cardBox.setLocation(x, y);
-    }
-    public BufferedImage getImage() {
-        return image;
-    }
-    public BufferedImage readImage() {
-        try {
-            BufferedImage image;
-            image = ImageIO.read(new File(backgroundFileName));
-            return image;
-        } catch (IOException e) {
-            System.out.println(e);
-            return null;
-        }
-
-    }
 
     public static ArrayList<Background> buildBackground(String genre) {
         ArrayList<Background> backgrounds = new ArrayList<>();

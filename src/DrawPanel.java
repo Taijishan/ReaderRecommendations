@@ -2,10 +2,14 @@ import org.w3c.dom.css.Rect;
 
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.Font;
 import java.util.Scanner;
@@ -38,6 +42,7 @@ class DrawPanel extends JPanel implements MouseListener {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.drawImage(readImage("backgrounds/" + genre + ".png"), 0, 0, null);
         int x = 50;
         int y = 10;
         for (int i = 0; i < novels.size(); i++) {
@@ -65,16 +70,6 @@ class DrawPanel extends JPanel implements MouseListener {
                 g.drawString("REFRESH PAGE", 670, 433);
                 g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
             }
-        }
-        for (int j = 0; j < backgrounds.size(); j++){
-            if (j == 1){
-                x-=1900;
-                y+=600;
-            }
-            Background b = backgrounds.get(j);
-            b.setRectangleLocation(0,0);
-            g.drawImage(b.getImage(),0,0,null);
-            x = x + b.getImage().getWidth()+10;
         }
     }
 
@@ -130,6 +125,18 @@ class DrawPanel extends JPanel implements MouseListener {
 
 
         }
+    }
+
+    public BufferedImage readImage(String backgroundFileName) {
+        try {
+            BufferedImage image;
+            image = ImageIO.read(new File(backgroundFileName));
+            return image;
+        } catch (IOException e) {
+            System.out.println(e);
+            return null;
+        }
+
     }
 
     public void mouseReleased(MouseEvent e) { }
