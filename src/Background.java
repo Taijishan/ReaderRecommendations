@@ -7,9 +7,7 @@ import java.awt.Rectangle;
 public class Background {
     private String genre;
     private String backgroundFileName;
-    private boolean show;
-    private Rectangle cardBox;
-    private BufferedImage image;
+
 
     public Background(String genre) {
         this.genre = genre;

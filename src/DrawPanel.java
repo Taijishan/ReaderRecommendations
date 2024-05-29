@@ -1,17 +1,14 @@
 import org.w3c.dom.css.Rect;
 
+import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.awt.Font;
 import java.util.Scanner;
 
 class DrawPanel extends JPanel implements MouseListener {
@@ -46,26 +43,28 @@ class DrawPanel extends JPanel implements MouseListener {
         int x = 50;
         int y = 10;
         for (int i = 0; i < novels.size(); i++) {
-            if (i == 9){
-                x-=1900;
+            if (i == 8){
+                x-=2700;
                 y+=600;
             }
             Novel n = novels.get(i);
             n.setRectangleLocation(x, y);
             g.drawImage(n.getImage(), x, y, null);
-            x = x + n.getImage().getWidth()+10;
+            x = x + n.getImage().getWidth()+100;
             if (!n.isShown()) {
                 button2 = new Rectangle(888, 555, 400, 80);
                 button2Shown = true;
+                g.drawRect((int)button2.getX(), (int)button2.getY(), (int)button2.getWidth(), (int)button2.getHeight());
+                g.setColor(Color.WHITE);
                 g.setFont(new Font("Times New Roman",Font.BOLD,20));
                 g.drawString("Are you interested?", 890, 570);
                 g.drawString("If yes, click on this box.", 890, 600);
                 g.drawString("If no, click the synopsis to go back.", 890, 630);
-                g.drawRect((int)button2.getX(), (int)button2.getY(), (int)button2.getWidth(), (int)button2.getHeight());
 
             }
             if (n.isShown()){
                 button2Shown = false;
+                g.setColor(Color.WHITE);
                 g.setFont(new Font("Courier New", Font.BOLD, 20));
                 g.drawString("REFRESH PAGE", 670, 433);
                 g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
