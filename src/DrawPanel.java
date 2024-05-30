@@ -94,8 +94,7 @@ class DrawPanel extends JPanel implements MouseListener {
             }
             if (button2Shown) {
                 if (button2.contains(pressed)) {
-                    System.out.println("You have selected the novel(s) for your reading list.");
-                    userList.addToList("placeholder");
+                    userList.removeFromList(novels.get(0));
                     System.out.println("As of now, your current reading list consists of these novels : " + userList.showReadingList()); //doesnt work
                     System.out.println("Would you like to start another browsing session? Your reading list will be saved. \ny/n?"); //save+load file implementation after fixing above^
                     String reply = s.nextLine();
