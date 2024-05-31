@@ -66,7 +66,7 @@ class DrawPanel extends JPanel implements MouseListener {
                 button2Shown = false;
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("Courier New", Font.BOLD, 20));
-                g.drawString("REFRESH PAGE", 670, 433);
+                g.drawString("REFRESH RECOMMENDATIONS", 670, 433);
                 g.drawRect((int)button.getX(), (int)button.getY(), (int)button.getWidth(), (int)button.getHeight());
             }
         }
