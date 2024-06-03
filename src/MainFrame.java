@@ -12,7 +12,7 @@ public class MainFrame extends JFrame implements Runnable {
         System.out.println("What genre do you want to read?\n1) mystery\n2) romance\n3) vr(virtual reality)\n4) xianxia\n5) let me browse");
         String response = s.nextLine();
         if (response.equals("1")){
-            System.out.println("Displaying mystery novel images.");
+            System.out.println("Displaying mystery novel images. What you see is just a display. Please refresh for further instructions.");
             int frameWidth = 1000;
             int frameHeight = 1000;
             p = new DrawPanel("mystery");
@@ -23,7 +23,7 @@ public class MainFrame extends JFrame implements Runnable {
             this.setVisible(true);
             startThread();
         } else if (response.equals("2")) {
-            System.out.println("Displaying romance novel images.");
+            System.out.println("Displaying romance novel images. What you see is just a display. Please refresh for further instructions.");
             int frameWidth = 1000;
             int frameHeight = 1000;
             p = new DrawPanel("romance");
@@ -35,7 +35,7 @@ public class MainFrame extends JFrame implements Runnable {
             startThread();
         }
         else if (response.equals("3")) {
-            System.out.println("Displaying vr novel images.");
+            System.out.println("Displaying vr novel images. What you see is just a display. Please refresh for further instructions.");
             int frameWidth = 1000;
             int frameHeight = 1000;
             p = new DrawPanel("vr");
@@ -47,7 +47,7 @@ public class MainFrame extends JFrame implements Runnable {
             startThread();
         }
         else if (response.equals("4")) {
-            System.out.println("Displaying xianxia novel images.");
+            System.out.println("Displaying xianxia novel images. What you see is just a display. Please refresh for further instructions.");
             int frameWidth = 1000;
             int frameHeight = 1000;
             p = new DrawPanel("xianxia");
@@ -59,7 +59,7 @@ public class MainFrame extends JFrame implements Runnable {
             startThread();
         }
         else if (response.equals("5")) {
-            System.out.println("Displaying random novel images.");
+            System.out.println("Displaying random novel images. What you see is just a display. Please refresh for further instructions.");
             int frameWidth = 1000;
             int frameHeight = 1000;
             p = new DrawPanel();

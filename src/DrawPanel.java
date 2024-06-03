@@ -58,7 +58,7 @@ class DrawPanel extends JPanel implements MouseListener {
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("Times New Roman",Font.BOLD,20));
                 g.drawString("Are you interested?", 890, 570);
-                g.drawString("If yes, click on this box.", 890, 600);
+                g.drawString("If yes, click on this box and return to intellij.", 890, 600);
                 g.drawString("If no, click the synopsis to go back.", 890, 630);
 
             }
@@ -94,14 +94,16 @@ class DrawPanel extends JPanel implements MouseListener {
             }
             if (button2Shown) {
                 if (button2.contains(pressed)) {
-                    userList.removeFromList(novels.get(0));
-                    System.out.println("As of now, your current reading list consists of these novels : " + userList.showReadingList()); //doesnt work
-                    System.out.println("Would you like to start another browsing session? Your reading list will be saved. \ny/n?"); //save+load file implementation after fixing above^
+                    userList.addToReadingList(novels.get(0));
+                    userList.removeFromTotalList(novels.get(0));
+                    System.out.println("As of now, the book you have selected for future reading is : " + userList.showReadingList());
+                    System.out.println("Would you like to start another browsing session? Your reading list will not be saved(go read the book you chose) \ny/n?"); //the reading list does not get saved
                     String reply = s.nextLine();
                     if (reply.equals("n")){
+                        System.out.println("placeholder");//if possible, try to attach the novel's link. How? IDK atm
                         System.exit(0);
                     } else if (reply.equals("y")) {
-                        System.out.println("placeholder"); //meant to be a recursive method that returns back to the beginning of program(after saving the reading list)
+                        ReaderRecommendationRunner.rerun();
                     }
                     else {
                         System.out.println("invalid response, operation terminated");
