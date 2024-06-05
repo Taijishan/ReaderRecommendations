@@ -100,7 +100,7 @@ class DrawPanel extends JPanel implements MouseListener {
                     System.out.println("Would you like to start another browsing session? Your reading list will not be saved(go read the book you chose) \ny/n?"); //the reading list does not get saved
                     String reply = s.nextLine();
                     if (reply.equals("n")){
-                        System.out.println("placeholder");//if possible, try to attach the novel's link. How? IDK atm
+                        System.out.println("Enjoy your new novel!");//if possible, try to attach the novel's link. How? IDK atm
                         System.exit(0);
                     } else if (reply.equals("y")) {
                         ReaderRecommendationRunner.rerun();
