@@ -18,8 +18,8 @@ class DrawPanel extends JPanel implements MouseListener {
     private Rectangle button;
     private Rectangle button2;
     private String genre;
-    private boolean button2Shown = false;
-    private ReadingList userList = new ReadingList();
+    private boolean button2Shown;
+    private ReadingList userList;
 
     public DrawPanel(String genre) {
         this.genre = genre;
@@ -27,6 +27,8 @@ class DrawPanel extends JPanel implements MouseListener {
         this.addMouseListener(this);
         novels = Novel.buildRecommendation(genre);
         backgrounds = Background.buildBackground(genre);
+        boolean button2Shown = false;
+        ReadingList userList = new ReadingList();
     }
 
     public DrawPanel() {
